@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <% if (kindOfDay === "sábado" || kindOfDay === "domingo") { %>
-        <h1 style="color: purple"><%= salute%>, hoje é <%= kindOfDay %> !</h1>
-    <% } else { %>
-        <h1 style="color: blue"><%= salute%>, hoje é <%= kindOfDay %> !</h1>
-    <% } %>
-    <ul>
-        <% for (let i = 0; i < newListItems.length; i++) { %>
-            <li><%= newListItems[i]%></li>
-        <% } %>
-    </ul>
-    <form action="/" method="post">
-       <input type="text" name="newItem">
-       <button type="submit" name="button">Adicionar</button>
-    </form>
+    <div class="box" id="heading">
+        <h1><%= salute%>, hoje é <%= kindOfDay %> !</h1>
+    </div>
+    <div class="box">
+            <% for (let i = 0; i < newListItems.length; i++) { %>
+                <div class="item">
+                    <input type="checkbox">
+                    <p><%= newListItems[i]%></p>
+                </div>
+            <% } %>
+
+            <form class="item" action="/" method="post">
+                <input placeholder="Novo item" type="text" name="newItem" autocomplete="off">
+                <button type="submit" name="button">+</button>
+             </form>
+    </div>
 </body>
 </html>
