@@ -5,6 +5,11 @@ const app = express();
 
 app.set("view engine", "ejs");
 
+app.use(bodyParser.urlencoded({extended: true}));
+
+let newItems = [];
+let newItem = "";
+
 app.get("/", function(req, res) {
     let today = new Date();
     let currentDay = today.toLocaleDateString('pt-BR', { weekday: 'long' });
@@ -18,8 +23,15 @@ app.get("/", function(req, res) {
     } else {
         grettings= "Boa noite";
     }
-    res.render("list", {kindOfDay: currentDay, salute: grettings});
+    res.render("list", {kindOfDay: currentDay, salute: grettings, newListItems: newItems});
 });
+
+
+app.post("/", function(req, res) {
+    newItem = req.body.newItem;
+    newItems.push(newItem);
+    res.redirect("/");
+})
 
 app.listen(3000, function() {
     console.log("Server is running on port 3000");

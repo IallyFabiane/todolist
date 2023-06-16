@@ -11,5 +11,14 @@
     <% } else { %>
         <h1 style="color: blue"><%= salute%>, hoje é <%= kindOfDay %> !</h1>
     <% } %>
+    <ul>
+        <% for (let i = 0; i < newListItems.length; i++) { %>
+            <li><%= newListItems[i]%></li>
+        <% } %>
+    </ul>
+    <form action="/" method="post">
+       <input type="text" name="newItem">
+       <button type="submit" name="button">Adicionar</button>
+    </form>
 </body>
 </html>
